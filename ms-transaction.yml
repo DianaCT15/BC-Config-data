@@ -1,0 +1,37 @@
+server:
+  port: 8095
+spring:
+  data:
+    mongodb:
+      database: transactions
+      host: localhost
+      port: 27017
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+backend:
+  service:
+    url: http://localhost:8094/payment/get/{id}
+  eureka:
+    url: http://ms-payment/payment/get/{id}
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health, info, refresh, restart, env
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+    refresh:
+      enabled: true
+    restart:
+      enabled: true
+    env:
+      enabled: true
